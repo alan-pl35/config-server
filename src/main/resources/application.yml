@@ -1,0 +1,38 @@
+spring:
+    application:
+        name: config-server
+    profiles:
+        active: default
+    cloud:
+        config:
+          server:
+            git:
+              uri: https://github.com/alan-pl35/microservice-config.git
+              default-label: main
+              clone-on-start: true #clona el proyecto config server una vez levantado el proyecto
+
+ #             ignore-local-ssh-settings: true
+  #            host-key-algorithm: ecdsa-sha2-nistp256
+   #           host-key:  AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=
+    #          private-key: |
+     #           -----BEGIN EC PRIVATE KEY-----
+      #          Proc-Type: 4,ENCRYPTED
+       #         DEK-Info: AES-128-CBC,F290D79F66D5B02162AD23C6B58911A9
+#
+ #               c7uUvNLlgzAtxJDnVTOrM1L37W7BRmdw7xQ5MLEOQKbDOwIqVhT1eZHxCDN0lQzG
+  #              Ped0UX+3g3GoHj/zfs56Hv1pHuIr3y8FVg90wznlp69pU13Vm8CoOSQB4NUj2VhM
+   #             N7C8snlhsNJkMjZWW0z8qbU1QnnlfYnAZsVEvuYfceM=
+    #            -----END EC PRIVATE KEY-----
+     #         passphrase: puga2024
+            #  username: alan-pl35
+
+             # password: |github.2024|
+server:
+  port: 7777
+
+eureka:
+  instance:
+    instance-id: "${spring.application.name}:${random.value}"
+  client:
+      server-url:
+          defaultZone: ${EUREKA_URL}
